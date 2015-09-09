@@ -1,0 +1,81 @@
+# Tidal uses a syntesiser called "Dirt".  It has a whole bunch of samples which you can refer to by their folder name.  On mac, it's located in ~/Dirt/samples.
+# To play sample 1 from a folder, such as clap (from the cp folder), just do this:
+
+d1 $ sound "cp"
+
+# to make everything stop, just call hush
+
+hush
+
+# There are 9 outputs, d1 to d9.  Each line should start with which output you want the sound to go to.
+
+d1 $ sound "cp"
+
+d2 $ sound "sn"
+
+hush
+
+# You must leave a line in between commands or they won't work.
+# To make a more complex pattern, just add more samples to the line
+
+d1 $ sound "cp sn cp crow"
+
+hush
+
+# Tidal will try and fit everything into one loop, which can get messy!
+
+d1 $ sound "cp sn ht lt crow dork chink co cp db dr dr_few"
+
+hush
+
+# You can put patterns over multiple loops using the slow commands
+
+d1 $ slow 4 $ sound "cp sn ht lt crow dork chink co cp db dr dr_few"
+
+hush
+
+# Using the $ allows you to chain commands together
+#This is boring so far as it's just one sound per beat.  You can have multiple sounds per beat using square brackets
+
+d1 $ sound "cp [sn sn sn sn] [bd bd]"
+
+# Exciting!  This is quite linear though.  You can use curly braces to do polyrhythms
+
+d1 $ sound "{cp sn sn, bd crow}"
+
+# You can even combine them both to make some really complex beats
+
+d1 $ sound "{[v v v][v v]v, bd [bd bd bd bd] bd cp}"
+
+hush
+
+# To make things easier, it's possible to repeat items using * and the number of repeats.  So, the above can be replaced with:
+
+d1 $ sound "{[v*3][v*2]v, bd [bd*4] bd cp}"
+
+# You can evern repeat square brackets or curleys
+
+d1 $ sound "[v*3 bd]*2"
+
+hush
+
+# In each sample folder there's usually multiple samples; you can choose the sample you want to use by using a colon and a number
+
+d1 $ sound "sn sn:1 sn:2 sn:3 sn:4"
+
+d1 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+# This is the very basics of Tidal, but should be enough to create your first song.  Try create something below!
+
+
+d4 $ slow 2 $ sound "alphabet:7 alphabet:4 [alphabet:11 alphabet:11] alphabet:14"
+
+d1 $ sound "ades3:2*4"
+
+d2 $ slow 1 $ sound "{hh*4, bd:4 sn:2}"
+
+d3 $ slow 1.5 $ sound "arpy*8 arpy:1*8"
+
+hush
